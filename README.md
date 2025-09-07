@@ -22,5 +22,6 @@
 ### 1. Клонирование репозитория
 
 ```bash
-git clone https://github.com/ваш-username/anti-dump-airdrop.git
+git clone https://github.com/User90138/anti-dump-airdrop.git
+
 cd anti-dump-airdrop
