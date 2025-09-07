@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntiDump Tech - Airdrop Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <div class="logo-img">A</div>
+            <div class="logo-text">AntiDump Tech</div>
+        </div>
+        
+        <div class="nav-section">
+            <div class="nav-title">Основное</div>
+            
+            <div class="nav-item active" data-page="dashboard">
+                <i class="fas fa-th-large"></i>
+                <span class="nav-text">Главная</span>
+            </div>
+            
+            <div class="nav-item" data-page="airdrop">
+                <i class="fas fa-gift"></i>
+                <span class="nav-text">Airdrop</span>
+            </div>
+            
+            <div class="nav-item" data-page="anti-dumping">
+                <i class="fas fa-shield-alt"></i>
+                <span class="nav-text">Антидампинг</span>
+            </div>
+        </div>
+        
+        <div class="nav-section">
+            <div class="nav-title">Участие</div>
+            
+            <div class="nav-item" data-page="tasks">
+                <i class="fas fa-tasks"></i>
+                <span class="nav-text">Задания</span>
+            </div>
+            
+            <div class="nav-item" data-page="rewards">
+                <i class="fas fa-coins"></i>
+                <span class="nav-text">Награды</span>
+            </div>
+            
+            <div class="nav-item" data-page="referral">
+                <i class="fas fa-users"></i>
+                <span class="nav-text">Рефералы</span>
+            </div>
+        </div>
+        
+        <div class="nav-section">
+            <div class="nav-title">Аккаунт</div>
+            
+            <div class="nav-item" data-page="wallet">
+                <i class="fas fa-wallet"></i>
+                <span class="nav-text">Кошелек</span>
+            </div>
+            
+            <div class="nav-item" data-page="settings">
+                <i class="fas fa-cog"></i>
+                <span class="nav-text">Настройки</span>
+            </div>
+            
+            <div class="nav-item" data-page="help">
+                <i class="fas fa-question-circle"></i>
+                <span class="nav-text">Помощь</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1 class="page-title" id="pageTitle">Главная панель</h1>
+            
+            <div class="user-info">
+                <div class="user-avatar">U</div>
+                <div>
+                    <div class="user-name">Участник Airdrop</div>
+                    <div class="user-status">
+                        <span class="status-dot"></span>
+                        <span>Уровень: Профессионал</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-content-container"></div>
+    </div>
+
+    <script src="js/components.js"></script>
+    <script src="js/pages.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
