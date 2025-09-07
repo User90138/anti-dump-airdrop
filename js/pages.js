@@ -1,3 +1,4 @@
+
 function getDashboardContent() {
     return `
         <div class="card">
@@ -326,4 +327,239 @@ function getWalletContent() {
 function getSettingsContent() {
     return `
         <div class="card">
+
             <div class="card-title
+ function getAboutContent() {
+    return `
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-info-circle"></i>
+                О проекте VexShield
+            </div>
+            
+            <div class="info-block">
+                <h3>📌 О проекте</h3>
+                <p><strong>VexShield (VSH)</strong> — инновационный токен с технологией <strong>AntiDump</strong>, которая защищает монеты и токены от резких падений цены. Мы создаём новый стандарт стабильности и доверия в криптомире.</p>
+            </div>
+        </div>
+    `;
+}
+
+function getTechnologyContent() {
+    return `
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-shield-alt"></i>
+                Технология AntiDump
+            </div>
+            
+            <div class="info-block">
+                <h3>🔒 Технология AntiDump</h3>
+                <p>Наша система защищает токены от резких падений цены через многоуровневую систему защиты:</p>
+            </div>
+            
+            <h3>📉 Динамическая комиссия при продаже:</h3>
+            <table class="commission-table">
+                <tr><th>День</th><th>Комиссия</th><th>Назначение</th></tr>
+                <tr><td>1-й день</td><td style="color: var(--danger-color);">30%</td><td>Защита от мгновенного демпинга</td></tr>
+                <tr><td>2-й день</td><td style="color: var(--warning-color);">20%</td><td>Постепенное снижение защиты</td></tr>
+                <tr><td>3-й день</td><td style="color: var(--success-color);">10%</td><td>Стандартная защита</td></tr>
+            </table>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-ban"></i></div>
+                    <h3>Ограничение продаж</h3>
+                    <p>🚫 <strong>Не более 0.5%</strong> от пула ликвидности в сутки</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                    <h3>Автоматический выкуп</h3>
+                    <p>🔄 <strong>50% комиссии</strong> идёт на buyback и сжигание токенов</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                    <h3>Вознаграждение холдерам</h3>
+                    <p>💰 <strong>Часть комиссий</strong> распределяется между держателями</p>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function getTokenomicsContent() {
+    return `
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-chart-pie"></i>
+                Токеномика VexShield
+            </div>
+            
+            <div class="info-block">
+                <h3>📊 Токеномика</h3>
+                <p>Общий объём: <strong>1,000,000,000 VSH</strong></p>
+            </div>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <div class="stat-value">1,000,000,000 VSH</div>
+                <div class="stat-label">Общий объём эмиссии</div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+                <div style="padding: 15px; background: var(--secondary-color); border-radius: 8px;">
+                    <div style="color: #7e57c2; font-weight: bold;">🔹 30%</div>
+                    <div>Airdrop</div>
+                </div>
+                <div style="padding: 15px; background: var(--secondary-color); border-radius: 8px;">
+                    <div style="color: #5e35b1; font-weight: bold;">🔹 30%</div>
+                    <div>Ликвидность</div>
+                </div>
+                <div style="padding: 15px; background: var(--secondary-color); border-radius: 8px;">
+                    <div style="color: #4527a0; font-weight: bold;">🔹 20%</div>
+                    <div>Маркетинг и партнёрства</div>
+                </div>
+                <div style="padding: 15px; background: var(--secondary-color); border-radius: 8px;">
+                    <div style="color: #311b92; font-weight: bold;">🔹 10%</div>
+                    <div>Команда</div>
+                </div>
+                <div style="padding: 15px; background: var(--secondary-color); border-radius: 8px;">
+                    <div style="color: #1a237e; font-weight: bold;">🔹 10%</div>
+                    <div>Резерв</div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function getAirdropContent() {
+    return `
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-gift"></i>
+                Airdrop программа
+            </div>
+            
+            <div class="info-block">
+                <h3>🎁 Airdrop</h3>
+                <p><strong>30% от аирдропа</strong> автоматически уходит в пул ликвидности для поддержки цены.</p>
+            </div>
+            
+            <h3>Условия защиты при продаже аирдроп-монет:</h3>
+            <div style="background: var(--secondary-color); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <span>1-й день после получения</span>
+                    <span style="color: var(--danger-color); font-weight: bold;">Комиссия 30%</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <span>2-й день после получения</span>
+                    <span style="color: var(--warning-color); font-weight: bold;">Комиссия 20%</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span>3-й день после получения</span>
+                    <span style="color: var(--success-color); font-weight: bold;">Комиссия 10%</span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function getModulesContent() {
+    return `
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-cube"></i>
+                Модули защиты
+            </div>
+            
+            <div class="info-block">
+                <h3>⚡ Модули защиты (Demo)</h3>
+                <p>В демо-версии доступна базовая функциональность. Активация реальных модулей будет включаться позднее.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-fire"></i></div>
+                    <h3>Сжигание токенов</h3>
+                    <p>Автоматическое сжигание части комиссий</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-percentage"></i></div>
+                    <h3>Динамическая комиссия</h3>
+                    <p>Адаптивная система комиссий</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-ban"></i></div>
+                    <h3>Лимит на продажи</h3>
+                    <p>Ограничение крупных продаж</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                    <h3>Buyback & Liquidity</h3>
+                    <p>Автоматическое пополнение ликвидности</p>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function getRoadmapContent() {
+    return `
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-map-marked-alt"></i>
+                Дорожная карта
+            </div>
+            
+            <div class="info-block">
+                <h3>🚀 Дорожная карта</h3>
+            </div>
+            
+            <div class="roadmap">
+                <div class="roadmap-item completed">
+                    <div class="roadmap-icon"><i class="fas fa-check"></i></div>
+                    <div class="roadmap-content">
+                        <h3>✅ Запуск сайта</h3>
+                        <p>Создание и запуск официального сайта VexShield</p>
+                    </div>
+                </div>
+                
+                <div class="roadmap-item completed">
+                    <div class="roadmap-icon"><i class="fas fa-gift"></i></div>
+                    <div class="roadmap-content">
+                        <h3>✅ Airdrop</h3>
+                        <p>Запуск программы распределения токенов</p>
+                    </div>
+                </div>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-icon"><i class="fas fa-id-card"></i></div>
+                    <div class="roadmap-content">
+                        <h3>🔜 NFT ShieldPass</h3>
+                        <p>Выпуск NFT для премиум-доступа</p>
+                    </div>
+                </div>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-icon"><i class="fas fa-exchange-alt"></i></div>
+                    <div class="roadmap-content">
+                        <h3>🔜 Интеграция с DEX & CEX</h3>
+                        <p>Листинг на биржах</p>
+                    </div>
+                </div>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-icon"><i class="fas fa-link"></i></div>
+                    <div class="roadmap-content">
+                        <h3>🔜 Bonding-механизм</h3>
+                        <p>Запуск системы бондинга</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}           
