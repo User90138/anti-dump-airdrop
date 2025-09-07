@@ -3,20 +3,547 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AntiDump Tech - Airdrop Platform</title>
+    <title>Grass - Зарабатывайте с помощью своего интернета</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <style>
+        :root {
+            --primary-color: #0a0e17;
+            --secondary-color: #141a2b;
+            --accent-color: #00c389;
+            --text-color: #ffffff;
+            --text-secondary: #a0a7b8;
+            --card-bg: #1c2333;
+            --hover-color: #2a3247;
+            --border-color: #2a3247;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background-color: var(--secondary-color);
+            padding: 25px 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            border-right: 1px solid var(--border-color);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            background-color: var(--accent-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-right: 12px;
+        }
+        
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+        
+        .nav-section {
+            margin-bottom: 30px;
+        }
+        
+        .nav-title {
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            padding-left: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            margin-bottom: 8px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--text-secondary);
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            background-color: var(--hover-color);
+            color: var(--text-color);
+        }
+        
+        .nav-item i {
+            margin-right: 12px;
+            font-size: 1.3rem;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .nav-text {
+            font-size: 1.05rem;
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 30px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .page-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), #00a0ff);
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .user-name {
+            font-weight: 500;
+        }
+        
+        .user-status {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        /* Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+        }
+        
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 18px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-right: 10px;
+        }
+        
+        .stat-value {
+            font-size: 2.4rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--accent-color);
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        /* Progress Section */
+        .progress-section {
+            margin-bottom: 35px;
+        }
+        
+        .progress-bar {
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 18px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-color), #00d99e);
+            border-radius: 6px;
+            width: 65%;
+            position: relative;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        /* Referral Section */
+        .referral-section {
+            margin-bottom: 35px;
+        }
+        
+        .referral-code {
+            background-color: var(--secondary-color);
+            padding: 18px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 22px 0;
+            border: 1px solid var(--border-color);
+        }
+        
+        .code-text {
+            font-family: monospace;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            color: var(--accent-color);
+        }
+        
+        .btn {
+            background: linear-gradient(90deg, var(--accent-color), #00d99e);
+            color: var(--primary-color);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 195, 137, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        /* Tiers Section */
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .tier-card {
+            background: linear-gradient(135deg, var(--card-bg), var(--secondary-color));
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid var(--border-color);
+        }
+        
+        .tier-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+        
+        .tier-card.active {
+            border: 2px solid var(--accent-color);
+            background: linear-gradient(135deg, var(--card-bg), #1a2c3b);
+        }
+        
+        .tier-name {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        
+        .tier-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .tier-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        /* Page Content */
+        .page-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page-content.active {
+            display: block;
+        }
+        
+        /* Earnings Table */
+        .earnings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .earnings-table th, .earnings-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .earnings-table th {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        /* Shop Items */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .shop-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        
+        .shop-item-img {
+            height: 180px;
+            background: linear-gradient(135deg, #2a3b55, #1c2839);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--accent-color);
+        }
+        
+        .shop-item-content {
+            padding: 20px;
+        }
+        
+        .shop-item-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .shop-item-desc {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .sidebar {
+                width: 230px;
+                padding: 20px 15px;
+            }
+            
+            .main-content {
+                margin-left: 230px;
+                padding: 25px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 80px;
+                padding: 20px 10px;
+            }
+            
+            .logo-text, .nav-text {
+                display: none;
+            }
+            
+            .logo {
+                justify-content: center;
+                margin-bottom: 30px;
+            }
+            
+            .logo-img {
+                margin-right: 0;
+            }
+            
+            .nav-item {
+                justify-content: center;
+                padding: 16px 12px;
+            }
+            
+            .nav-item i {
+                margin-right: 0;
+                font-size: 1.4rem;
+            }
+            
+            .nav-title {
+                text-align: center;
+                padding-left: 0;
+            }
+            
+            .main-content {
+                margin-left: 80px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .user-info {
+                margin-bottom: 20px;
+                margin-top: 15px;
+            }
+            
+            .tiers-grid, .shop-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            body {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 15px;
+            }
+            
+            .logo-text, .nav-text {
+                display: block;
+            }
+            
+            .nav-item {
+                justify-content: flex-start;
+            }
+            
+            .nav-item i {
+                margin-right: 12px;
+            }
+            
+            .nav-title {
+                text-align: left;
+                padding-left: 15px;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+            
+            .menu-toggle {
+                display: block;
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 1000;
+                background-color: var(--accent-color);
+                color: var(--primary-color);
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+            
+            .sidebar.hidden {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="menu-toggle" id="menuToggle">
         <i class="fas fa-bars"></i>
     </div>
 
+    <!-- Sidebar Navigation -->
     <div class="sidebar" id="sidebar">
         <div class="logo">
-            <div class="logo-img">A</div>
-            <div class="logo-text">AntiDump Tech</div>
+            <div class="logo-img">G</div>
+            <div class="logo-text">Grass</div>
         </div>
         
         <div class="nav-section">
@@ -24,46 +551,41 @@
             
             <div class="nav-item active" data-page="dashboard">
                 <i class="fas fa-th-large"></i>
-                <span class="nav-text">Главная</span>
+                <span class="nav-text">Панель управления</span>
             </div>
             
-            <div class="nav-item" data-page="airdrop">
+            <div class="nav-item" data-page="earnings">
+                <i class="fas fa-chart-line"></i>
+                <span class="nav-text">Доходы</span>
+            </div>
+            
+            <div class="nav-item" data-page="shop">
+                <i class="fas fa-store"></i>
+                <span class="nav-text">Магазин</span>
+            </div>
+            
+            <div class="nav-item" data-page="rewards">
                 <i class="fas fa-gift"></i>
-                <span class="nav-text">Airdrop</span>
-            </div>
-            
-            <div class="nav-item" data-page="anti-dumping">
-                <i class="fas fa-shield-alt"></i>
-                <span class="nav-text">Антидампинг</span>
+                <span class="nav-text">Награды</span>
             </div>
         </div>
         
         <div class="nav-section">
-            <div class="nav-title">Участие</div>
-            
-            <div class="nav-item" data-page="tasks">
-                <i class="fas fa-tasks"></i>
-                <span class="nav-text">Задания</span>
-            </div>
-            
-            <div class="nav-item" data-page="rewards">
-                <i class="fas fa-coins"></i>
-                <span class="nav-text">Награды</span>
-            </div>
+            <div class="nav-title">Сеть</div>
             
             <div class="nav-item" data-page="referral">
                 <i class="fas fa-users"></i>
-                <span class="nav-text">Рефералы</span>
+                <span class="nav-text">Реферальная программа</span>
+            </div>
+            
+            <div class="nav-item" data-page="network">
+                <i class="fas fa-share-alt"></i>
+                <span class="nav-text">ПОДЕЛИТЬСЯ С ДРУЗЬЯМИ</span>
             </div>
         </div>
         
         <div class="nav-section">
             <div class="nav-title">Аккаунт</div>
-            
-            <div class="nav-item" data-page="wallet">
-                <i class="fas fa-wallet"></i>
-                <span class="nav-text">Кошелек</span>
-            </div>
             
             <div class="nav-item" data-page="settings">
                 <i class="fas fa-cog"></i>
@@ -74,30 +596,289 @@
                 <i class="fas fa-question-circle"></i>
                 <span class="nav-text">Помощь</span>
             </div>
+            
+            <div class="nav-item" data-page="logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="nav-text">Выйти</span>
+            </div>
         </div>
     </div>
 
+    <!-- Main Content -->
     <div class="main-content">
+        <!-- Header -->
         <div class="header">
-            <h1 class="page-title" id="pageTitle">Главная панель</h1>
+            <h1 class="page-title" id="pageTitle">Панель управления</h1>
             
             <div class="user-info">
-                <div class="user-avatar">U</div>
+                <div class="user-avatar">A</div>
                 <div>
-                    <div class="user-name">Участник Airdrop</div>
+                    <div class="user-name">Александр Петров</div>
                     <div class="user-status">
                         <span class="status-dot"></span>
-                        <span>Уровень: Профессионал</span>
+                        <span>Online</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="page-content-container"></div>
+        <!-- Dashboard Page -->
+        <div class="page-content active" id="dashboard">
+            <div class="card">
+                <div class="card-title">
+                    <i class="fas fa-seedling"></i>
+                    Добро пожаловать в 11-ю эпоху!
+                </div>
+                <p>На панели управления вы увидите свои заработки за эту эпоху.</p>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="card">
+                    <div class="card-title"><i class="fas fa-coins"></i> Доходы Эпохи 11</div>
+                    <div class="stat-value">0,00</div>
+                    <div class="stat-label">Время работы: 0 дн, 0 ч, 0 мин.</div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title"><i class="fas fa-calendar-day"></i> Доходы за сегодня</div>
+                    <div class="stat-value">0,00</div>
+                    <div class="stat-label">Время работы: 0 дн, 0 ч, 0 мин.</div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title"><i class="fas fa-user-friends"></i> Рефералы</div>
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">Активные пользователи</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-title"><i class="fas fa-tasks"></i> Статистика доходов</div>
+                
+                <table class="earnings-table">
+                    <tr>
+                        <th>Завершенный</th>
+                        <th>Статус</th>
+                    </tr>
+                    <tr>
+                        <td>Установить приложение. Фланц для ПК</td>
+                        <td>Не завершено</td>
+                    </tr>
+                    <tr>
+                        <td>Выйти</td>
+                        <td>Не завершено</td>
+                    </tr>
+                    <tr>
+                        <td>Открыть данную работу</td>
+                        <td>Не завершено</td>
+                    </tr>
+                    <tr>
+                        <td>Подчинить данную работу</td>
+                        <td>Не завершено</td>
+                    </tr>
+                    <tr>
+                        <td>Достижения будут</td>
+                        <td>Не завершено</td>
+                    </tr>
+                    <tr>
+                        <td>Более 25 информации</td>
+                        <td>Не завершено</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Earnings Page -->
+        <div class="page-content" id="earnings">
+            <div class="card">
+                <div class="card-title"><i class="fas fa-chart-line"></i> Детальная статистика доходов</div>
+                
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="stat-value">0,00</div>
+                        <div class="stat-label">Общий доход</div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="stat-value">0,00</div>
+                        <div class="stat-label">Доход за последние 7 дней</div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="stat-value">0,00</div>
+                        <div class="stat-label">Доход за сегодня</div>
+                    </div>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-text">
+                    <span>Прогресс текущей эпохи</span>
+                    <span>65%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shop Page -->
+        <div class="page-content" id="shop">
+            <div class="card">
+                <div class="card-title"><i class="fas fa-store"></i> Магазин</div>
+                <p>Увеличение своего дохода. ПОДЕЛИТЬСЯ С ДРУЗЬЯМИ</p>
+                
+                <div class="shop-grid">
+                    <div class="shop-item">
+                        <div class="shop-item-img">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="shop-item-content">
+                            <h3 class="shop-item-title">Android-приложение Grass</h3>
+                            <p class="shop-item-desc">Трава.io - скачайте приложение для Android устройств.</p>
+                            <button class="btn"><i class="fas fa-download"></i> СКАЧАТЬ</button>
+                        </div>
+                    </div>
+                    
+                    <div class="shop-item">
+                        <div class="shop-item-img">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <div class="shop-item-content">
+                            <h3 class="shop-item-title">Приложение Grass для ПК</h3>
+                            <p class="shop-item-desc">Рифталь16 - версия для настольных компьютеров.</p>
+                            <button class="btn"><i class="fas fa-download"></i> СКАЧАТЬ</button>
+                        </div>
+                    </div>
+                    
+                    <div class="shop-item">
+                        <div class="shop-item-img">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="shop-item-content">
+                            <h3 class="shop-item-title">Ускорение сети</h3>
+                            <p class="shop-item-desc">Увеличьте скорость работы и доходность.</p>
+                            <button class="btn"><i class="fas fa-shopping-cart"></i> 3.00 X</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other pages would go here with similar structure -->
+        <div class="page-content" id="rewards">
+            <div class="card">
+                <div class="card-title"><i class="fas fa-gift"></i> Награды</div>
+                <p>Система вознаграждений за активность</p>
+                <!-- Rewards content would go here -->
+            </div>
+        </div>
+        
+        <div class="page-content" id="referral">
+            <div class="card">
+                <div class="card-title"><i class="fas fa-users"></i> Реферальная программа</div>
+                <p>Приглашайте друзей и получайте бонусы</p>
+                
+                <div class="referral-code">
+                    <div class="code-text">https://app.grass.io/ref?code=8XZ3T9</div>
+                    <button class="btn"><i class="fas fa-copy"></i> Копировать</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-content" id="network">
+            <div class="card">
+                <div class="card-title"><i class="fas fa-share-alt"></i> ПОДЕЛИТЬСЯ С ДРУЗЬЯМИ</div>
+                <p>Расскажите о Grass в социальных сетях</p>
+                <!-- Network content would go here -->
+            </div>
+        </div>
+        
+        <div class="page-content" id="settings">
+            <div class="card">
+                <div class="card-title"><i class="fas fa-cog"></i> Настройки аккаунта</div>
+                <p>Управление параметрами вашего аккаунта</p>
+                <!-- Settings content would go here -->
+            </div>
+        </div>
+        
+        <div class="page-content" id="help">
+            <div class="card">
+                <div class="card-title"><i class="fas fa-question-circle"></i> Центр помощи</div>
+                <p>Найдите ответы на распространенные вопросы</p>
+                <!-- Help content would go here -->
+            </div>
+        </div>
+        
+        <div class="page-content" id="logout">
+            <div class="card">
+                <div class="card-title"><i class="fas fa-sign-out-alt"></i> Выход из системы</div>
+                <p>Вы уверены, что хотите выйти?</p>
+                <button class="btn" style="margin-top: 20px;"><i class="fas fa-sign-out-alt"></i> Выйти</button>
+            </div>
+        </div>
     </div>
 
-    <script src="js/components.js"></script>
-    <script src="js/pages.js"></script>
-    <script src="js/script.js"></script>
+    <script>
+        // Page navigation
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all items
+                document.querySelectorAll('.nav-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                
+                // Add active class to clicked item
+                this.classList.add('active');
+                
+                // Hide all pages
+                document.querySelectorAll('.page-content').forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Show selected page
+                const pageId = this.getAttribute('data-page');
+                document.getElementById(pageId).classList.add('active');
+                
+                // Update page title
+                const pageTitle = this.querySelector('.nav-text').textContent;
+                document.getElementById('pageTitle').textContent = pageTitle;
+            });
+        });
+        
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('hidden');
+        });
+        
+        // Copy referral code
+        const copyButtons = document.querySelectorAll('.btn');
+        copyButtons.forEach(btn => {
+            if (btn.textContent.includes('Копировать')) {
+                btn.addEventListener('click', function() {
+                    const code = document.querySelector('.code-text').textContent;
+                    navigator.clipboard.writeText(code).then(() => {
+                        this.innerHTML = '<i class="fas fa-check"></i> Скопировано!';
+                        setTimeout(() => {
+                            this.innerHTML = '<i class="fas fa-copy"></i> Копировать';
+                        }, 2000);
+                    });
+                });
+            }
+        });
+        
+        // Animate progress bar
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressFill = document.querySelector('.progress-fill');
+            let width = 0;
+            const targetWidth = 65;
+            const interval = setInterval(() => {
+                if (width >= targetWidth) {
+                    clearInterval(interval);
+                } else {
+                    width++;
+                    progressFill.style.width = width + '%';
+                }
+            }, 30);
+        });
+    </script>
 </body>
 </html>
