@@ -322,13 +322,86 @@ function getWalletContent() {
         </div>
     `;
 }
-
 function getSettingsContent() {
     return `
         <div class="card">
-            <div class="card-title
+            <div class="card-title">
+                <i class="fas fa-cog"></i>
+                Настройки
+            </div>
+            <p>Настройки вашего аккаунта и параметров системы</p>
+            
+            <div class="task-list">
+                <div class="task-item">
+                    <div class="task-text">Язык интерфейса</div>
+                    <select style="padding: 8px; border-radius: 5px; background: var(--secondary-color); color: white; border: 1px solid var(--border-color);">
+                        <option>Русский</option>
+                        <option>English</option>
+                    </select>
+                </div>
+                
+                <div class="task-item">
+                    <div class="task-text">Уведомления</div>
+                    <input type="checkbox" checked style="width: 20px; height: 20px;">
+                </div>
+                
+                <div class="task-item">
+                    <div class="task-text">Тема оформления</div>
+                    <select style="padding: 8px; border-radius: 5px; background: var(--secondary-color); color: white; border: 1px solid var(--border-color);">
+                        <option>Тёмная</option>
+                        <option>Светлая</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button class="btn" style="margin-top: 20px;"><i class="fas fa-save"></i> Сохранить настройки</button>
+        </div>
+    `;
+}
+
 // ===== VEXSHIELD CONTENT - ДОБАВИТЬ В КОНЕЦ ФАЙЛА =====
 
+function getAboutContent() {
+    return `
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-info-circle"></i>
+                О проекте VexShield
+            </div>
+            
+            <div class="info-block">
+                <h3>📌 О проекте</h3>
+                <p><strong>VexShield (VSH)</strong> — инновационный токен с технологией <strong>AntiDump</strong>, которая защищает монеты и токены от резких падений цены. Мы создаём новый стандарт стабильности и доверия в криптомире.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Защита</h3>
+                    <p>Динамическая система комиссий предотвращает резкие продажи</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Стабильность</h3>
+                    <p>Поддержание цены через механизмы buyback и сжигания</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Вознаграждения</h3>
+                    <p>Холдеры получают часть комиссий от транзакций</p>
+                </div>
+            </div>
+        </div>
+    `;
+}
 function getAboutContent() {
     return `
         <div class="card">
@@ -715,5 +788,6 @@ function getFaqContent() {
         </div>
     `;
 }
+
 
 
