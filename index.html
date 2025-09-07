@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grass - Зарабатывайте с помощью своего интернета</title>
+    <title>VexShield (VSH) - AntiDump Protection</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #0a0e17;
             --secondary-color: #141a2b;
-            --accent-color: #00c389;
+            --accent-color: #7e57c2;
+            --accent-gradient: linear-gradient(90deg, #7e57c2, #5e35b1);
             --text-color: #ffffff;
             --text-secondary: #a0a7b8;
             --card-bg: #1c2333;
             --hover-color: #2a3247;
             --border-color: #2a3247;
+            --success-color: #00c389;
+            --warning-color: #ff9f43;
+            --danger-color: #ff4757;
         }
         
         * {
@@ -30,9 +34,11 @@
             line-height: 1.6;
             display: flex;
             min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(126, 87, 194, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(94, 53, 177, 0.1) 0%, transparent 40%);
         }
         
-        /* Sidebar */
         .sidebar {
             width: 280px;
             background-color: var(--secondary-color);
@@ -41,6 +47,7 @@
             height: 100vh;
             overflow-y: auto;
             border-right: 1px solid var(--border-color);
+            z-index: 100;
         }
         
         .logo {
@@ -54,7 +61,7 @@
         .logo-img {
             width: 45px;
             height: 45px;
-            background-color: var(--accent-color);
+            background: var(--accent-gradient);
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -67,6 +74,9 @@
         .logo-text {
             font-size: 1.6rem;
             font-weight: bold;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .nav-section {
@@ -109,7 +119,6 @@
             font-size: 1.05rem;
         }
         
-        /* Main Content */
         .main-content {
             flex: 1;
             margin-left: 280px;
@@ -139,7 +148,7 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-color), #00a0ff);
+            background: var(--accent-gradient);
             margin-right: 15px;
             display: flex;
             align-items: center;
@@ -154,7 +163,7 @@
         
         .user-status {
             font-size: 0.9rem;
-            color: var(--accent-color);
+            color: var(--success-color);
             display: flex;
             align-items: center;
         }
@@ -162,12 +171,11 @@
         .status-dot {
             width: 8px;
             height: 8px;
-            background-color: var(--accent-color);
+            background-color: var(--success-color);
             border-radius: 50%;
             margin-right: 8px;
         }
         
-        /* Dashboard Grid */
         .dashboard-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -181,6 +189,11 @@
             padding: 25px;
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
             border: 1px solid var(--border-color);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
         }
         
         .card-title {
@@ -199,7 +212,9 @@
             font-size: 2.4rem;
             font-weight: bold;
             margin-bottom: 8px;
-            color: var(--accent-color);
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .stat-label {
@@ -207,7 +222,6 @@
             font-size: 0.95rem;
         }
         
-        /* Progress Section */
         .progress-section {
             margin-bottom: 35px;
         }
@@ -222,7 +236,7 @@
         
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--accent-color), #00d99e);
+            background: var(--accent-gradient);
             border-radius: 6px;
             width: 65%;
             position: relative;
@@ -235,32 +249,49 @@
             font-size: 0.95rem;
         }
         
-        /* Referral Section */
-        .referral-section {
+        .airdrop-section {
             margin-bottom: 35px;
         }
         
-        .referral-code {
-            background-color: var(--secondary-color);
-            padding: 18px;
-            border-radius: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 22px 0;
+        .airdrop-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 25px;
             border: 1px solid var(--border-color);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
         }
         
-        .code-text {
-            font-family: monospace;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-            color: var(--accent-color);
+        .airdrop-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 20px;
+        }
+        
+        .airdrop-info {
+            flex: 1;
+        }
+        
+        .airdrop-title {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+        
+        .airdrop-desc {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
         }
         
         .btn {
-            background: linear-gradient(90deg, var(--accent-color), #00d99e);
-            color: var(--primary-color);
+            background: var(--accent-gradient);
+            color: white;
             border: none;
             padding: 12px 24px;
             border-radius: 8px;
@@ -278,16 +309,21 @@
         .btn:hover {
             opacity: 0.9;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 195, 137, 0.3);
+            box-shadow: 0 4px 12px rgba(126, 87, 194, 0.4);
         }
         
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--accent-color);
-            color: var(--accent-color);
+        .btn-success {
+            background: linear-gradient(90deg, var(--success-color), #00d99e);
         }
         
-        /* Tiers Section */
+        .btn-warning {
+            background: linear-gradient(90deg, var(--warning-color), #ffb142);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(90deg, var(--danger-color), #ff6b81);
+        }
+        
         .tiers-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -311,7 +347,7 @@
         
         .tier-card.active {
             border: 2px solid var(--accent-color);
-            background: linear-gradient(135deg, var(--card-bg), #1a2c3b);
+            background: linear-gradient(135deg, var(--card-bg), #2a1b4b);
         }
         
         .tier-name {
@@ -332,7 +368,6 @@
             font-size: 0.95rem;
         }
         
-        /* Page Content */
         .page-content {
             display: none;
             animation: fadeIn 0.4s ease;
@@ -347,65 +382,160 @@
             display: block;
         }
         
-        /* Earnings Table */
-        .earnings-table {
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+        
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+        }
+        
+        .task-list {
+            margin: 25px 0;
+        }
+        
+        .task-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .task-checkbox {
+            margin-right: 15px;
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            border: 2px solid var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .task-checkbox.completed {
+            background: var(--accent-color);
+        }
+        
+        .task-checkbox.completed:after {
+            content: "✓";
+            color: white;
+        }
+        
+        .task-text {
+            flex: 1;
+        }
+        
+        .task-reward {
+            color: var(--success-color);
+            font-weight: bold;
+        }
+        
+        .commission-table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
         }
         
-        .earnings-table th, .earnings-table td {
+        .commission-table th, .commission-table td {
             padding: 15px;
             text-align: left;
             border-bottom: 1px solid var(--border-color);
         }
         
-        .earnings-table th {
+        .commission-table th {
             color: var(--text-secondary);
             font-weight: 500;
         }
         
-        /* Shop Items */
-        .shop-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 25px;
-        }
-        
-        .shop-item {
-            background: var(--card-bg);
-            border-radius: 12px;
+        .tokenomics-chart {
+            display: flex;
+            height: 200px;
+            margin: 30px 0;
+            border-radius: 10px;
             overflow: hidden;
-            border: 1px solid var(--border-color);
         }
         
-        .shop-item-img {
-            height: 180px;
-            background: linear-gradient(135deg, #2a3b55, #1c2839);
+        .chart-item {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            color: var(--accent-color);
+            color: white;
+            font-weight: bold;
+            position: relative;
         }
         
-        .shop-item-content {
-            padding: 20px;
-        }
-        
-        .shop-item-title {
-            font-size: 1.3rem;
+        .chart-item:hover::after {
+            content: attr(data-percent);
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 5px 10px;
+            border-radius: 5px;
+            bottom: 100%;
             margin-bottom: 10px;
         }
         
-        .shop-item-desc {
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            font-size: 0.95rem;
+        .roadmap {
+            margin: 30px 0;
         }
         
-        /* Responsive */
+        .roadmap-item {
+            display: flex;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .roadmap-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .roadmap-content {
+            flex: 1;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .roadmap-item.completed .roadmap-icon {
+            background: var(--success-color);
+        }
+        
+        .roadmap-item.completed .roadmap-content {
+            border-color: var(--success-color);
+        }
+        
         @media (max-width: 1200px) {
             .sidebar {
                 width: 230px;
@@ -472,8 +602,36 @@
                 margin-top: 15px;
             }
             
-            .tiers-grid, .shop-grid {
+            .tiers-grid, .features-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .airdrop-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .airdrop-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .tokenomics-chart {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .chart-item {
+                height: 50px;
+            }
+            
+            .roadmap-item {
+                flex-direction: column;
+            }
+            
+            .roadmap-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
             }
         }
         
@@ -517,8 +675,8 @@
                 top: 20px;
                 right: 20px;
                 z-index: 1000;
-                background-color: var(--accent-color);
-                color: var(--primary-color);
+                background: var(--accent-gradient);
+                color: white;
                 width: 45px;
                 height: 45px;
                 border-radius: 50%;
@@ -539,11 +697,10 @@
         <i class="fas fa-bars"></i>
     </div>
 
-    <!-- Sidebar Navigation -->
     <div class="sidebar" id="sidebar">
         <div class="logo">
-            <div class="logo-img">G</div>
-            <div class="logo-text">Grass</div>
+            <div class="logo-img">V</div>
+            <div class="logo-text">VexShield</div>
         </div>
         
         <div class="nav-section">
@@ -551,334 +708,418 @@
             
             <div class="nav-item active" data-page="dashboard">
                 <i class="fas fa-th-large"></i>
-                <span class="nav-text">Панель управления</span>
+                <span class="nav-text">Главная</span>
             </div>
             
-            <div class="nav-item" data-page="earnings">
-                <i class="fas fa-chart-line"></i>
-                <span class="nav-text">Доходы</span>
+            <div class="nav-item" data-page="about">
+                <i class="fas fa-info-circle"></i>
+                <span class="nav-text">О проекте</span>
             </div>
             
-            <div class="nav-item" data-page="shop">
-                <i class="fas fa-store"></i>
-                <span class="nav-text">Магазин</span>
+            <div class="nav-item" data-page="technology">
+                <i class="fas fa-shield-alt"></i>
+                <span class="nav-text">Технология</span>
+            </div>
+        </div>
+        
+        <div class="nav-section">
+            <div class="nav-title">Токеномика</div>
+            
+            <div class="nav-item" data-page="tokenomics">
+                <i class="fas fa-chart-pie"></i>
+                <span class="nav-text">Распределение</span>
             </div>
             
-            <div class="nav-item" data-page="rewards">
+            <div class="nav-item" data-page="airdrop">
                 <i class="fas fa-gift"></i>
-                <span class="nav-text">Награды</span>
+                <span class="nav-text">Airdrop</span>
+            </div>
+            
+            <div class="nav-item" data-page="modules">
+                <i class="fas fa-cube"></i>
+                <span class="nav-text">Модули</span>
             </div>
         </div>
         
         <div class="nav-section">
-            <div class="nav-title">Сеть</div>
+            <div class="nav-title">Развитие</div>
             
-            <div class="nav-item" data-page="referral">
-                <i class="fas fa-users"></i>
-                <span class="nav-text">Реферальная программа</span>
+            <div class="nav-item" data-page="roadmap">
+                <i class="fas fa-map-marked-alt"></i>
+                <span class="nav-text">Дорожная карта</span>
             </div>
             
-            <div class="nav-item" data-page="network">
-                <i class="fas fa-share-alt"></i>
-                <span class="nav-text">ПОДЕЛИТЬСЯ С ДРУЗЬЯМИ</span>
-            </div>
-        </div>
-        
-        <div class="nav-section">
-            <div class="nav-title">Аккаунт</div>
-            
-            <div class="nav-item" data-page="settings">
-                <i class="fas fa-cog"></i>
-                <span class="nav-text">Настройки</span>
-            </div>
-            
-            <div class="nav-item" data-page="help">
+            <div class="nav-item" data-page="faq">
                 <i class="fas fa-question-circle"></i>
-                <span class="nav-text">Помощь</span>
-            </div>
-            
-            <div class="nav-item" data-page="logout">
-                <i class="fas fa-sign-out-alt"></i>
-                <span class="nav-text">Выйти</span>
+                <span class="nav-text">FAQ</span>
             </div>
         </div>
     </div>
 
-    <!-- Main Content -->
     <div class="main-content">
-        <!-- Header -->
         <div class="header">
-            <h1 class="page-title" id="pageTitle">Панель управления</h1>
+            <h1 class="page-title" id="pageTitle">Главная панель</h1>
             
             <div class="user-info">
-                <div class="user-avatar">A</div>
+                <div class="user-avatar">V</div>
                 <div>
-                    <div class="user-name">Александр Петров</div>
+                    <div class="user-name">VexShield Holder</div>
                     <div class="user-status">
                         <span class="status-dot"></span>
-                        <span>Online</span>
+                        <span>VSH Balance: 0</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Dashboard Page -->
-        <div class="page-content active" id="dashboard">
-            <div class="card">
-                <div class="card-title">
-                    <i class="fas fa-seedling"></i>
-                    Добро пожаловать в 11-ю эпоху!
-                </div>
-                <p>На панели управления вы увидите свои заработки за эту эпоху.</p>
-            </div>
-            
-            <div class="dashboard-grid">
-                <div class="card">
-                    <div class="card-title"><i class="fas fa-coins"></i> Доходы Эпохи 11</div>
-                    <div class="stat-value">0,00</div>
-                    <div class="stat-label">Время работы: 0 дн, 0 ч, 0 мин.</div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-title"><i class="fas fa-calendar-day"></i> Доходы за сегодня</div>
-                    <div class="stat-value">0,00</div>
-                    <div class="stat-label">Время работы: 0 дн, 0 ч, 0 мин.</div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-title"><i class="fas fa-user-friends"></i> Рефералы</div>
-                    <div class="stat-value">0</div>
-                    <div class="stat-label">Активные пользователи</div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-title"><i class="fas fa-tasks"></i> Статистика доходов</div>
-                
-                <table class="earnings-table">
-                    <tr>
-                        <th>Завершенный</th>
-                        <th>Статус</th>
-                    </tr>
-                    <tr>
-                        <td>Установить приложение. Фланц для ПК</td>
-                        <td>Не завершено</td>
-                    </tr>
-                    <tr>
-                        <td>Выйти</td>
-                        <td>Не завершено</td>
-                    </tr>
-                    <tr>
-                        <td>Открыть данную работу</td>
-                        <td>Не завершено</td>
-                    </tr>
-                    <tr>
-                        <td>Подчинить данную работу</td>
-                        <td>Не завершено</td>
-                    </tr>
-                    <tr>
-                        <td>Достижения будут</td>
-                        <td>Не завершено</td>
-                    </tr>
-                    <tr>
-                        <td>Более 25 информации</td>
-                        <td>Не завершено</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-
-        <!-- Earnings Page -->
-        <div class="page-content" id="earnings">
-            <div class="card">
-                <div class="card-title"><i class="fas fa-chart-line"></i> Детальная статистика доходов</div>
-                
-                <div class="dashboard-grid">
-                    <div class="card">
-                        <div class="stat-value">0,00</div>
-                        <div class="stat-label">Общий доход</div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="stat-value">0,00</div>
-                        <div class="stat-label">Доход за последние 7 дней</div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="stat-value">0,00</div>
-                        <div class="stat-label">Доход за сегодня</div>
-                    </div>
-                </div>
-                
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-                <div class="progress-text">
-                    <span>Прогресс текущей эпохи</span>
-                    <span>65%</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Shop Page -->
-        <div class="page-content" id="shop">
-            <div class="card">
-                <div class="card-title"><i class="fas fa-store"></i> Магазин</div>
-                <p>Увеличение своего дохода. ПОДЕЛИТЬСЯ С ДРУЗЬЯМИ</p>
-                
-                <div class="shop-grid">
-                    <div class="shop-item">
-                        <div class="shop-item-img">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <div class="shop-item-content">
-                            <h3 class="shop-item-title">Android-приложение Grass</h3>
-                            <p class="shop-item-desc">Трава.io - скачайте приложение для Android устройств.</p>
-                            <button class="btn"><i class="fas fa-download"></i> СКАЧАТЬ</button>
-                        </div>
-                    </div>
-                    
-                    <div class="shop-item">
-                        <div class="shop-item-img">
-                            <i class="fas fa-desktop"></i>
-                        </div>
-                        <div class="shop-item-content">
-                            <h3 class="shop-item-title">Приложение Grass для ПК</h3>
-                            <p class="shop-item-desc">Рифталь16 - версия для настольных компьютеров.</p>
-                            <button class="btn"><i class="fas fa-download"></i> СКАЧАТЬ</button>
-                        </div>
-                    </div>
-                    
-                    <div class="shop-item">
-                        <div class="shop-item-img">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <div class="shop-item-content">
-                            <h3 class="shop-item-title">Ускорение сети</h3>
-                            <p class="shop-item-desc">Увеличьте скорость работы и доходность.</p>
-                            <button class="btn"><i class="fas fa-shopping-cart"></i> 3.00 X</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Other pages would go here with similar structure -->
-        <div class="page-content" id="rewards">
-            <div class="card">
-                <div class="card-title"><i class="fas fa-gift"></i> Награды</div>
-                <p>Система вознаграждений за активность</p>
-                <!-- Rewards content would go here -->
-            </div>
-        </div>
-        
-        <div class="page-content" id="referral">
-            <div class="card">
-                <div class="card-title"><i class="fas fa-users"></i> Реферальная программа</div>
-                <p>Приглашайте друзей и получайте бонусы</p>
-                
-                <div class="referral-code">
-                    <div class="code-text">https://app.grass.io/ref?code=8XZ3T9</div>
-                    <button class="btn"><i class="fas fa-copy"></i> Копировать</button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="page-content" id="network">
-            <div class="card">
-                <div class="card-title"><i class="fas fa-share-alt"></i> ПОДЕЛИТЬСЯ С ДРУЗЬЯМИ</div>
-                <p>Расскажите о Grass в социальных сетях</p>
-                <!-- Network content would go here -->
-            </div>
-        </div>
-        
-        <div class="page-content" id="settings">
-            <div class="card">
-                <div class="card-title"><i class="fas fa-cog"></i> Настройки аккаунта</div>
-                <p>Управление параметрами вашего аккаунта</p>
-                <!-- Settings content would go here -->
-            </div>
-        </div>
-        
-        <div class="page-content" id="help">
-            <div class="card">
-                <div class="card-title"><i class="fas fa-question-circle"></i> Центр помощи</div>
-                <p>Найдите ответы на распространенные вопросы</p>
-                <!-- Help content would go here -->
-            </div>
-        </div>
-        
-        <div class="page-content" id="logout">
-            <div class="card">
-                <div class="card-title"><i class="fas fa-sign-out-alt"></i> Выход из системы</div>
-                <p>Вы уверены, что хотите выйти?</p>
-                <button class="btn" style="margin-top: 20px;"><i class="fas fa-sign-out-alt"></i> Выйти</button>
-            </div>
-        </div>
+        <div id="page-content-container"></div>
     </div>
 
     <script>
         // Page navigation
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', function() {
-                // Remove active class from all items
                 document.querySelectorAll('.nav-item').forEach(i => {
                     i.classList.remove('active');
                 });
                 
-                // Add active class to clicked item
                 this.classList.add('active');
                 
-                // Hide all pages
-                document.querySelectorAll('.page-content').forEach(page => {
-                    page.classList.remove('active');
-                });
-                
-                // Show selected page
-                const pageId = this.getAttribute('data-page');
-                document.getElementById(pageId).classList.add('active');
-                
-                // Update page title
                 const pageTitle = this.querySelector('.nav-text').textContent;
                 document.getElementById('pageTitle').textContent = pageTitle;
+                
+                const pageId = this.getAttribute('data-page');
+                loadPageContent(pageId);
             });
         });
-        
+
         // Mobile menu toggle
         document.getElementById('menuToggle').addEventListener('click', function() {
             document.getElementById('sidebar').classList.toggle('hidden');
         });
-        
-        // Copy referral code
-        const copyButtons = document.querySelectorAll('.btn');
-        copyButtons.forEach(btn => {
-            if (btn.textContent.includes('Копировать')) {
-                btn.addEventListener('click', function() {
-                    const code = document.querySelector('.code-text').textContent;
-                    navigator.clipboard.writeText(code).then(() => {
-                        this.innerHTML = '<i class="fas fa-check"></i> Скопировано!';
-                        setTimeout(() => {
-                            this.innerHTML = '<i class="fas fa-copy"></i> Копировать';
-                        }, 2000);
-                    });
-                });
+
+        // Load page content dynamically
+        function loadPageContent(pageId) {
+            const pageContainer = document.getElementById('page-content-container');
+            
+            switch(pageId) {
+                case 'dashboard':
+                    pageContainer.innerHTML = getDashboardContent();
+                    break;
+                case 'about':
+                    pageContainer.innerHTML = getAboutContent();
+                    break;
+                case 'technology':
+                    pageContainer.innerHTML = getTechnologyContent();
+                    break;
+                case 'tokenomics':
+                    pageContainer.innerHTML = getTokenomicsContent();
+                    break;
+                case 'airdrop':
+                    pageContainer.innerHTML = getAirdropContent();
+                    break;
+                case 'modules':
+                    pageContainer.innerHTML = getModulesContent();
+                    break;
+                case 'roadmap':
+                    pageContainer.innerHTML = getRoadmapContent();
+                    break;
+                case 'faq':
+                    pageContainer.innerHTML = getFaqContent();
+                    break;
+                default:
+                    pageContainer.innerHTML = `<div class="card"><div class="card-title"><i class="fas fa-cog"></i>${pageId}</div><p>Содержимое страницы</p></div>`;
             }
-        });
-        
-        // Animate progress bar
-        document.addEventListener('DOMContentLoaded', function() {
-            const progressFill = document.querySelector('.progress-fill');
-            let width = 0;
-            const targetWidth = 65;
-            const interval = setInterval(() => {
-                if (width >= targetWidth) {
-                    clearInterval(interval);
-                } else {
-                    width++;
-                    progressFill.style.width = width + '%';
-                }
-            }, 30);
-        });
-    </script>
-</body>
-</html>
+            
+            // Animate progress bar on dashboard
+            if (pageId === 'dashboard') {
+                setTimeout(() => {
+                    const progressFill = document.querySelector('.progress-fill');
+                    if (progressFill) {
+                        let width = 0;
+                        const targetWidth = 65;
+                        const interval = setInterval(() => {
+                            if (width >= targetWidth) {
+                                clearInterval(interval);
+                            } else {
+                                width++;
+                                progressFill.style.width = width + '%';
+                            }
+                        }, 30);
+                    }
+                }, 100);
+            }
+        }
+
+        // Page content templates
+        function getDashboardContent() {
+            return `
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-rocket"></i>
+                        Добро пожаловать в VexShield (VSH)!
+                    </div>
+                    <p>Инновационный токен с технологией AntiDump, которая защищает от резких падений цены.</p>
+                </div>
+                
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-title"><i class="fas fa-coins"></i> Токены VSH</div>
+                        <div class="stat-value">0 VSH</div>
+                        <div class="stat-label">Текущий баланс</div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-title"><i class="fas fa-shield-alt"></i> Защита</div>
+                        <div class="stat-value">Active</div>
+                        <div class="stat-label">AntiDump система</div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-title"><i class="fas fa-users"></i> Холдеры</div>
+                        <div class="stat-value">1,247</div>
+                        <div class="stat-label">Активные держатели</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title"><i class="fas fa-chart-line"></i> Прогресс Airdrop</div>
+                    
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>Завершено заданий</span>
+                        <span>65%</span>
+                    </div>
+                    
+                    <p>Участвуйте в airdrop и получайте токены VSH с защитой от демпинга.</p>
+                </div>
+            `;
+        }
+
+        function getAboutContent() {
+            return `
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-info-circle"></i>
+                        О проекте VexShield
+                    </div>
+                    
+                    <div class="airdrop-card">
+                        <div class="airdrop-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="airdrop-info">
+                            <h2 class="airdrop-title">VexShield (VSH)</h2>
+                            <p class="airdrop-desc">Инновационный токен с технологией <strong>AntiDump</strong>, которая защищает монеты и токены от резких падений цены. Мы создаём новый стандарт стабильности и доверия в криптомире.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h3>Защита</h3>
+                            <p>Динамическая система комиссий предотвращает резкие продажи</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Стабильность</h3>
+                            <p>Поддержание цены через механизмы buyback и сжигания</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-gift"></i>
+                            </div>
+                            <h3>Вознаграждения</h3>
+                            <p>Холдеры получают часть комиссий от транзакций</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getTechnologyContent() {
+            return `
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-shield-alt"></i>
+                        Технология AntiDump
+                    </div>
+                    
+                    <h3 style="margin: 20px 0 10px; color: var(--accent-color);">📉 Динамическая комиссия при продаже:</h3>
+                    <table class="commission-table">
+                        <tr>
+                            <th>День</th>
+                            <th>Комиссия</th>
+                            <th>Назначение</th>
+                        </tr>
+                        <tr>
+                            <td>1-й день</td>
+                            <td><span style="color: var(--danger-color);">30%</span></td>
+                            <td>Защита от мгновенного демпинга</td>
+                        </tr>
+                        <tr>
+                            <td>2-й день</td>
+                            <td><span style="color: var(--warning-color);">20%</span></td>
+                            <td>Постепенное снижение защиты</td>
+                        </tr>
+                        <tr>
+                            <td>3-й день</td>
+                            <td><span style="color: var(--success-color);">10%</span></td>
+                            <td>Стандартная защита</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="features-grid" style="margin-top: 30px;">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-ban"></i>
+                            </div>
+                            <h3>Ограничение продаж</h3>
+                            <p>Не более 0.5% от пула ликвидности в сутки</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <h3>Автоматический выкуп</h3>
+                            <p>50% комиссии идёт на buyback и сжигание токенов</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-hand-holding-usd"></i>
+                            </div>
+                            <h3>Вознаграждение холдерам</h3>
+                            <p>Часть комиссий распределяется между держателями</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getTokenomicsContent() {
+            return `
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-chart-pie"></i>
+                        Токеномика VexShield
+                    </div>
+                    
+                    <div style="text-align: center; margin: 20px 0;">
+                        <div class="stat-value">1,000,000,000 VSH</div>
+                        <div class="stat-label">Общий объём эмиссии</div>
+                    </div>
+                    
+                    <div class="tokenomics-chart">
+                        <div class="chart-item" style="background: #7e57c2; flex: 30;" data-percent="30% - Airdrop">Airdrop</div>
+                        <div class="chart-item" style="background: #5e35b1; flex: 30;" data-percent="30% - Ликвидность">Liquidity</div>
+                        <div class="chart-item" style="background: #4527a0; flex: 20;" data-percent="20% - Маркетинг">Marketing</div>
+                        <div class="chart-item" style="background: #311b92; flex: 10;" data-percent="10% - Команда">Team</div>
+                        <div class="chart-item" style="background: #1a237e; flex: 10;" data-percent="10% - Резерв">Reserve</div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+                        <div style="padding: 15px; background: var(--secondary-color); border-radius: 8px;">
+                            <div style="color: #7e57c2; font-weight: bold;">🔹 30%</div>
+                            <div>Airdrop</div>
+                        </div>
+                        <div style="padding: 15px; background: var(--secondary-color); border-radius: 8px;">
+                            <div style="color: #5e35b1; font-weight: bold;">🔹 30%</div>
+                            <div>Ликвидность</div>
+                        </div>
+                        <div style="padding: 15px; background: var(--secondary-color); border-radius: 8px;">
+                            <div style="color: #4527a0; font-weight: bold;">🔹 20%</div>
+                            <div>Маркетинг</div>
+                        </div>
+                        <div style="padding: 15px; background: var(--secondary-color); border-radius: 8px;">
+                            <div style="color: #311b92; font-weight: bold;">🔹 10%</div>
+                            <div>Команда</div>
+                        </div>
+                        <div style="padding: 15px; background: var(--secondary-color); border-radius: 8px;">
+                            <div style="color: #1a237e; font-weight: bold;">🔹 10%</div>
+                            <div>Резерв</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getAirdropContent() {
+            return `
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-gift"></i>
+                        Airdrop программа
+                    </div>
+                    
+                    <div class="airdrop-card">
+                        <div class="airdrop-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <div class="airdrop-info">
+                            <h2 class="airdrop-title">VexShield Airdrop</h2>
+                            <p class="airdrop-desc"><strong>30% от аирдропа</strong> автоматически уходит в пул ликвидности для поддержки цены.</p>
+                            <button class="btn"><i class="fas fa-play-circle"></i> Участвовать в Airdrop</button>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin: 30px 0 15px; color: var(--accent-color);">Условия защиты при продаже аирдроп-монет:</h3>
+                    <div style="background: var(--secondary-color); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <span>1-й день после получения</span>
+                            <span style="color: var(--danger-color); font-weight: bold;">Комиссия 30%</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <span>2-й день после получения</span>
+                            <span style="color: var(--warning-color); font-weight: bold;">Комиссия 20%</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>3-й день после получения</span>
+                            <span style="color: var(--success-color); font-weight: bold;">Комиссия 10%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Защита цены</h3>
+                            <p>Автоматическая стабилизация стоимости токенов</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h3>Безопасность</h3>
+                            <p>Постепенное снижение комиссий предотвращает панику</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Стабильность</h3>
+                            <p>Поддержание здоровой экономики токена</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getModulesContent() {
+            return `
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-cube"></i>
+                        Модули защиты
