@@ -3,28 +3,28 @@ function getDashboardContent() {
         <div class="card">
             <div class="card-title">
                 <i class="fas fa-rocket"></i>
-                Добро пожаловать в AntiDump Tech Airdrop!
+                Добро пожаловать в VexShield (VSH)!
             </div>
-            <p>Участвуйте в программе и получайте токены за выполнение заданий. Наша антидампинговая технология защищает стоимость токенов от резкого падения.</p>
+            <p>Инновационный токен с технологией AntiDump, которая защищает от резких падений цены.</p>
         </div>
         
         <div class="dashboard-grid">
             <div class="card">
-                <div class="card-title"><i class="fas fa-coins"></i> Токены получено</div>
-                <div class="stat-value">1,250 ADT</div>
+                <div class="card-title"><i class="fas fa-coins"></i> Токены VSH</div>
+                <div class="stat-value">0 VSH</div>
                 <div class="stat-label">Текущий баланс</div>
             </div>
             
             <div class="card">
-                <div class="card-title"><i class="fas fa-tasks"></i> Задания выполнено</div>
-                <div class="stat-value">8/12</div>
-                <div class="stat-label">Прогресс выполнения</div>
+                <div class="card-title"><i class="fas fa-shield-alt"></i> Защита</div>
+                <div class="stat-value">Active</div>
+                <div class="stat-label">AntiDump система</div>
             </div>
             
             <div class="card">
-                <div class="card-title"><i class="fas fa-user-friends"></i> Рефералы</div>
-                <div class="stat-value">5</div>
-                <div class="stat-label">Приглашенные участники</div>
+                <div class="card-title"><i class="fas fa-users"></i> Холдеры</div>
+                <div class="stat-value">1,247</div>
+                <div class="stat-label">Активные держатели</div>
             </div>
         </div>
         
@@ -39,296 +39,178 @@ function getDashboardContent() {
                 <span>65%</span>
             </div>
             
-            <p>Выполните все задания чтобы получить максимальное количество токенов ADT.</p>
+            <p>Участвуйте в airdrop и получайте токены VSH с защитой от демпинга.</p>
         </div>
     `;
 }
 
 function getAirdropContent() {
     return `
-        <div class="airdrop-card">
-            <div class="airdrop-icon">
+        <div class="card">
+            <div class="card-title">
                 <i class="fas fa-gift"></i>
+                Airdrop программа
             </div>
-            <div class="airdrop-info">
-                <h2 class="airdrop-title">AntiDump Tech Airdrop</h2>
-                <p class="airdrop-desc">Участвуйте в раздаче токенов ADT и получите до 5,000 токенов за выполнение заданий.</p>
-                <button class="btn"><i class="fas fa-play-circle"></i> Начать участие</button>
+            
+            <div class="info-block">
+                <h3>🎁 Airdrop</h3>
+                <p><strong>30% от аирдропа</strong> автоматически уходит в пул ликвидности для поддержки цены.</p>
+            </div>
+            
+            <div class="airdrop-card">
+                <div class="airdrop-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <div class="airdrop-info">
+                    <h2 class="airdrop-title">VexShield Airdrop</h2>
+                    <p class="airdrop-desc">Участвуйте в раздаче токенов VSH и получите до 5,000 токенов за выполнение заданий.</p>
+                    <button class="btn"><i class="fas fa-play-circle"></i> Участвовать в Airdrop</button>
+                </div>
+            </div>
+            
+            <h3 style="margin: 30px 0 15px; color: var(--accent-color);">Условия защиты при продаже аирдроп-монет:</h3>
+            <div style="background: var(--secondary-color); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <span>1-й день после получения</span>
+                    <span style="color: var(--danger-color); font-weight: bold;">Комиссия 30%</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <span>2-й день после получения</span>
+                    <span style="color: var(--warning-color); font-weight: bold;">Комиссия 20%</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span>3-й день после получения</span>
+                    <span style="color: var(--success-color); font-weight: bold;">Комиссия 10%</span>
+                </div>
             </div>
         </div>
-        
+    `;
+}
+
+function getModulesContent() {
+    return `
         <div class="card">
-            <div class="card-title"><i class="fas fa-info-circle"></i> Информация о Airdrop</div>
+            <div class="card-title">
+                <i class="fas fa-cube"></i>
+                Модули защиты
+            </div>
+            
+            <div class="info-block">
+                <h3>⚡ Модули защиты (Demo)</h3>
+                <p>В демо-версии доступна базовая функциональность. Активация реальных модулей будет включаться позднее.</p>
+            </div>
+            
+            <div class="module-demo">
+                <h3>Демо-версия включает:</h3>
+                <p>• 🔥 Сжигание токенов</p>
+                <p>• 💸 Динамическая комиссия</p>
+                <p>• 🚫 Лимит на продажи</p>
+                <p>• 🔄 Buyback & Liquidity</p>
+            </div>
             
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-calendar"></i>
+                        <i class="fas fa-fire"></i>
                     </div>
-                    <h3>Период проведения</h3>
-                    <p>1 марта - 30 апреля 2023</p>
+                    <h3>Сжигание токенов</h3>
+                    <p>Автоматическое сжигание части комиссий для уменьшения supply</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-gem"></i>
+                        <i class="fas fa-percentage"></i>
                     </div>
-                    <h3>Общий пул</h3>
-                    <p>5,000,000 ADT</p>
+                    <h3>Динамическая комиссия</h3>
+                    <p>Адаптивная система комиссий в зависимости от времени</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-ban"></i>
                     </div>
-                    <h3>Участников</h3>
-                    <p>15,327</p>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function getAntiDumpingContent() {
-    return `
-        <div class="card">
-            <div class="card-title"><i class="fas fa-shield-alt"></i> Антидампинговая технология</div>
-            <p>Наша уникальная технология защищает стоимость токенов от резкого падения после листинга на биржах.</p>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3>Вестайдинг</h3>
-                    <p>Постепенная разблокировка токенов в течение 12 месяцев</p>
+                    <h3>Лимит на продажи</h3>
+                    <p>Ограничение крупных продаж для защиты цены</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-chart-pie"></i>
+                        <i class="fas fa-sync-alt"></i>
                     </div>
-                    <h3>Динамическое распределение</h3>
-                    <p>Умное распределение токенов между участниками</p>
+                    <h3>Buyback & Liquidity</h3>
+                    <p>Автоматическое пополнение ликвидности из комиссий</p>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-balance-scale"></i>
+            </div>
+        </div>
+    `;
+}
+
+function getRoadmapContent() {
+    return `
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-map-marked-alt"></i>
+                Дорожная карта
+            </div>
+            
+            <div class="info-block">
+                <h3>🚀 Дорожная карта</h3>
+            </div>
+            
+            <div class="roadmap">
+                <div class="roadmap-item completed">
+                    <div class="roadmap-icon">
+                        <i class="fas fa-check"></i>
                     </div>
-                    <h3>Стабильность цены</h3>
-                    <p>Механизмы поддержания стоимости токенов</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="card">
-            <div class="card-title"><i class="fas fa-calculator"></i> Калькулятор вознаграждений</div>
-            
-            <div class="dashboard-grid">
-                <div class="card">
-                    <div class="stat-value">1,250 ADT</div>
-                    <div class="stat-label">Текущее вознаграждение</div>
+                    <div class="roadmap-content">
+                        <h3>✅ Запуск сайта</h3>
+                        <p>Создание и запуск официального сайта VexShield</p>
+                    </div>
                 </div>
                 
-                <div class="card">
-                    <div class="stat-value">3,500 ADT</div>
-                    <div class="stat-label">Потенциальное вознаграждение</div>
-                </div>
-            </div>
-            
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
-            <div class="progress-text">
-                <span>Прогресс выполнения</span>
-                <span>65%</span>
-            </div>
-        </div>
-    `;
-}
-
-function getTasksContent() {
-    return `
-        <div class="card">
-            <div class="card-title"><i class="fas fa-tasks"></i> Задания Airdrop</div>
-            <p>Выполните задания чтобы получить токены ADT. Каждое задание приносит определенное количество токенов.</p>
-            
-            <div class="task-list">
-                <div class="task-item">
-                    <div class="task-checkbox completed"></div>
-                    <div class="task-text">Подписаться на Twitter</div>
-                    <div class="task-reward">+100 ADT</div>
+                <div class="roadmap-item completed">
+                    <div class="roadmap-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="roadmap-content">
+                        <h3>✅ Airdrop</h3>
+                        <p>Запуск программы распределения токенов с защитой от демпинга</p>
+                    </div>
                 </div>
                 
-                <div class="task-item">
-                    <div class="task-checkbox completed"></div>
-                    <div class="task-text">Присоединиться к Telegram</div>
-                    <div class="task-reward">+100 ADT</div>
+                <div class="roadmap-item">
+                    <div class="roadmap-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <div class="roadmap-content">
+                        <h3>🔜 NFT ShieldPass</h3>
+                        <p>Выпуск NFT для премиум-доступа к эксклюзивным функциям</p>
+                    </div>
                 </div>
                 
-                <div class="task-item">
-                    <div class="task-checkbox completed"></div>
-                    <div class="task-text">Подписаться на Discord</div>
-                    <div class="task-reward">+150 ADT</div>
+                <div class="roadmap-item">
+                    <div class="roadmap-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="roadmap-content">
+                        <h3>🔜 Интеграция с DEX & CEX</h3>
+                        <p>Листинг на децентрализованных и централизованных биржах</p>
+                    </div>
                 </div>
                 
-                <div class="task-item">
-                    <div class="task-checkbox"></div>
-                    <div class="task-text">Сделать ретвит</div>
-                    <div class="task-reward">+50 ADT</div>
-                </div>
-                
-                <div class="task-item">
-                    <div class="task-checkbox"></div>
-                    <div class="task-text">Пригласить 5 друзей</div>
-                    <div class="task-reward">+500 ADT</div>
-                </div>
-            </div>
-            
-            <button class="btn btn-success"><i class="fas fa-check-circle"></i> Завершить все задания</button>
-        </div>
-    `;
-}
-
-function getRewardsContent() {
-    return `
-        <div class="card">
-            <div class="card-title"><i class="fas fa-gift"></i> Система наград</div>
-            <p>Получайте награды за активность и выполнение заданий.</p>
-            
-            <div class="dashboard-grid">
-                <div class="card">
-                    <div class="card-title"><i class="fas fa-coins"></i> Доступно для вывода</div>
-                    <div class="stat-value">1,250 ADT</div>
-                    <div class="stat-label">Текущий баланс</div>
-                    <button class="btn" style="margin-top: 15px;"><i class="fas fa-download"></i> Вывести</button>
-                </div>
-                
-                <div class="card">
-                    <div class="card-title"><i class="fas fa-lock"></i> Заблокировано</div>
-                    <div class="stat-value">3,500 ADT</div>
-                    <div class="stat-label">Будет разблокировано через 30 дней</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="card">
-            <div class="card-title"><i class="fas fa-history"></i> История наград</div>
-            
-            <div class="task-list">
-                <div class="task-item">
-                    <div class="task-text">Задание: Подписка на Twitter</div>
-                    <div class="task-reward">+100 ADT</div>
-                </div>
-                
-                <div class="task-item">
-                    <div class="task-text">Задание: Присоединение к Telegram</div>
-                    <div class="task-reward">+100 ADT</div>
-                </div>
-                
-                <div class="task-item">
-                    <div class="task-text">Реферальная программа</div>
-                    <div class="task-reward">+250 ADT</div>
+                <div class="roadmap-item">
+                    <div class="roadmap-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <div class="roadmap-content">
+                        <h3>🔜 Bonding-механизм</h3>
+                        <p>Запуск системы бондинга для стабильного роста экосистемы</p>
+                    </div>
                 </div>
             </div>
         </div>
     `;
 }
 
-function getReferralContent() {
-    return `
-        <div class="card">
-            <div class="card-title"><i class="fas fa-users"></i> Реферальная программа</div>
-            <p>Приглашайте друзей и получайте бонусы</p>
-            
-            <div class="referral-code">
-                <div class="code-text">https://antidump.tech/ref?code=ADT2023</div>
-                <button class="btn"><i class="fas fa-copy"></i> Копировать</button>
-            </div>
-            
-            <div class="dashboard-grid">
-                <div class="card">
-                    <div class="card-title"><i class="fas fa-user-plus"></i> Приглашено друзей</div>
-                    <div class="stat-value">5</div>
-                    <div class="stat-label">Активные рефералы</div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-title"><i class="fas fa-coins"></i> Заработано</div>
-                    <div class="stat-value">1,250 ADT</div>
-                    <div class="stat-label">С реферальной программы</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="card">
-            <div class="card-title"><i class="fas fa-chart-line"></i> Статистика рефералов</div>
-            
-            <div class="progress-bar">
-                <div class="progress-fill" style="width: 30%;"></div>
-            </div>
-            <div class="progress-text">
-                <span>Прогресс до следующего бонуса</span>
-                <span>30%</span>
-            </div>
-            
-            <p>Пригласите еще 3 друзей чтобы получить бонус 500 ADT</p>
-        </div>
-    `;
-}
-
-function getWalletContent() {
-    return `
-        <div class="card">
-            <div class="card-title"><i class="fas fa-wallet"></i> Мой кошелек</div>
-            <p>Управление вашими токенами ADT</p>
-            
-            <div class="dashboard-grid">
-                <div class="card">
-                    <div class="card-title"><i class="fas fa-coins"></i> Общий баланс</div>
-                    <div class="stat-value">4,750 ADT</div>
-                    <div class="stat-label">Эквивалент: $237.50</div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-title"><i class="fas fa-unlock"></i> Доступно</div>
-                    <div class="stat-value">1,250 ADT</div>
-                    <div class="stat-label">Можно вывести</div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-title"><i class="fas fa-lock"></i> Заблокировано</div>
-                    <div class="stat-value">3,500 ADT</div>
-                    <div class="stat-label">Вестайдинг</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="card">
-            <div class="card-title"><i class="fas fa-exchange-alt"></i> Операции</div>
-            
-            <div class="task-list">
-                <div class="task-item">
-                    <div class="task-text">Вывод токенов</div>
-                    <button class="btn"><i class="fas fa-download"></i> Вывести</button>
-                </div>
-                
-                <div class="task-item">
-                    <div class="task-text">Пополнить баланс</div>
-                    <button class="btn"><i class="fas fa-upload"></i> Пополнить</button>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function getSettingsContent() {
-    return `
-        <div class="card">
-            <div class="card-title
-
-
-
-
-
+// Остальные функции оставьте без изменений (getRewardsContent, getReferralContent, getWalletContent, getSettingsContent)
+// или добавьте их из предыдущей версии если нужно
