@@ -57,40 +57,38 @@ function updateProgressBar() {
 function loadPageContent(pageId) {
     const pageContainer = document.getElementById('page-content-container');
     
+   function loadPageContent(pageId) {
+    const pageContainer = document.getElementById('page-content-container');
+    
     switch(pageId) {
         case 'dashboard':
             pageContainer.innerHTML = getDashboardContent();
             break;
+        case 'about':
+            pageContainer.innerHTML = getAboutContent();
+            break;
+        case 'technology':
+            pageContainer.innerHTML = getTechnologyContent();
+            break;
+        case 'tokenomics':
+            pageContainer.innerHTML = getTokenomicsContent();
+            break;
         case 'airdrop':
             pageContainer.innerHTML = getAirdropContent();
             break;
-        case 'anti-dumping':
-            pageContainer.innerHTML = getAntiDumpingContent();
+        case 'modules':
+            pageContainer.innerHTML = getModulesContent();
             break;
-        case 'tasks':
-            pageContainer.innerHTML = getTasksContent();
+        case 'roadmap':
+            pageContainer.innerHTML = getRoadmapContent();
             break;
-        case 'rewards':
-            pageContainer.innerHTML = getRewardsContent();
+        case 'faq':
+            pageContainer.innerHTML = getFaqContent();
             break;
-        case 'referral':
-            pageContainer.innerHTML = getReferralContent();
-            break;
-        case 'wallet':
-            pageContainer.innerHTML = getWalletContent();
-            break;
-        case 'settings':
-            pageContainer.innerHTML = getSettingsContent();
-            break;
-        case 'help':
-            pageContainer.innerHTML = getHelpContent();
-            break;
-       case 'token':
-    pageContainer.innerHTML = getTokenContent();
-    break;
-    default:
+        default:
             pageContainer.innerHTML = `<div class="card"><div class="card-title"><i class="fas fa-cog"></i>${pageId}</div><p>Содержимое страницы</p></div>`;
     }
+}
     
     if (pageId === 'tasks') {
         setTimeout(() => {
@@ -129,4 +127,5 @@ document.addEventListener('DOMContentLoaded', function() {
 case 'token':
     pageContainer.innerHTML = getTokenContent();
     break;
+
 
