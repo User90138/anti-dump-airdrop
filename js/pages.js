@@ -225,3 +225,66 @@ function getRoadmapContent() {
         </div>
     `;
 }
+function getAboutContent() {
+    return `
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-info-circle"></i>
+                О проекте VexShield
+            </div>
+            
+            <div class="info-block">
+                <h3>📌 О проекте</h3>
+                <p><strong>VexShield (VSH)</strong> — инновационный токен с технологией <strong>AntiDump</strong>, которая защищает монеты и токены от резких падений цены. Мы создаём новый стандарт стабильности и доверия в криптомире.</p>
+            </div>
+        </div>
+    `;
+}
+
+function getTechnologyContent() {
+    return `
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-shield-alt"></i>
+                Технология AntiDump
+            </div>
+            
+            <div class="info-block">
+                <h3>🔒 Технология AntiDump</h3>
+                <p>Наша система защищает токены от резких падений цены через многоуровневую систему защиты.</p>
+            </div>
+        </div>
+    `;
+}
+
+function getTokenomicsContent() {
+    return `
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-chart-pie"></i>
+                Токеномика VexShield
+            </div>
+            
+            <div class="info-block">
+                <h3>📊 Токеномика</h3>
+                <p>Общий объём: <strong>1,000,000,000 VSH</strong></p>
+            </div>
+        </div>
+    `;
+}
+
+function getFaqContent() {
+    return `
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-question-circle"></i>
+                Часто задаваемые вопросы
+            </div>
+            
+            <div class="info-block">
+                <h3>❓ FAQ</h3>
+                <p>Ответы на самые популярные вопросы о VexShield</p>
+            </div>
+        </div>
+    `;
+}
