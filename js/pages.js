@@ -3,15 +3,15 @@ function getDashboardContent() {
         <div class="card">
             <div class="card-title">
                 <i class="fas fa-rocket"></i>
-                Добро пожаловать в VexShield (VSH)!
+                Добро пожаловать в VexShield (VXH)!
             </div>
-            <p>Инновационный токен с технологией AntiDump, которая защищает от резких падений цены.</p>
+            <p>Инновационный токен с технологией AntiDump, который защищает инвесторов от резких обвалов цен.</p>
         </div>
         
         <div class="dashboard-grid">
             <div class="card">
-                <div class="card-title"><i class="fas fa-coins"></i> Токены VSH</div>
-                <div class="stat-value">0 VSH</div>
+                <div class="card-title"><i class="fas fa-coins"></i> Токены VXH</div>
+                <div class="stat-value">0 VXH</div>
                 <div class="stat-label">Текущий баланс</div>
             </div>
             
@@ -39,7 +39,7 @@ function getDashboardContent() {
                 <span>65%</span>
             </div>
             
-            <p>Участвуйте в airdrop и получайте токены VSH с защитой от демпинга.</p>
+            <p>Участвуйте в airdrop и получайте токены VXH с защитой от демпинга.</p>
         </div>
     `;
 }
@@ -49,11 +49,12 @@ function getAirdropContent() {
         <div class="card">
             <div class="card-title">
                 <i class="fas fa-gift"></i>
-                Airdrop программа
+                VXH Airdrop программа
             </div>
             
             <div class="info-block">
-                <h3>🎁 Airdrop</h3>
+                <h3>🎁 Участвуй в Airdrop</h3>
+                <p><strong>Получите до 5,000 VXH</strong> за выполнение простых заданий и станьте частью сообщества.</p>
                 <p><strong>30% от аирдропа</strong> автоматически уходит в пул ликвидности для поддержки цены.</p>
             </div>
             
@@ -63,12 +64,12 @@ function getAirdropContent() {
                 </div>
                 <div class="airdrop-info">
                     <h2 class="airdrop-title">VexShield Airdrop</h2>
-                    <p class="airdrop-desc">Участвуйте в раздаче токенов VSH и получите до 5,000 токенов за выполнение заданий.</p>
-                    <button class="btn"><i class="fas fa-play-circle"></i> Участвовать в Airdrop</button>
+                    <p class="airdrop-desc">Распространение токенов VXH с защитой от дампа и бонусами для ранних участников.</p>
+                    <button class="btn"><i class="fas fa-play-circle"></i> Присоединиться к Airdrop</button>
                 </div>
             </div>
             
-            <h3 style="margin: 30px 0 15px; color: var(--accent-color);">Условия защиты при продаже аирдроп-монет:</h3>
+            <h3 style="margin: 30px 0 15px; color: var(--accent-color);">Условия защиты при продаже airdrop-токенов:</h3>
             <div style="background: var(--secondary-color); padding: 20px; border-radius: 10px; margin: 20px 0;">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
                     <span>1-й день после получения</span>
@@ -81,6 +82,53 @@ function getAirdropContent() {
                 <div style="display: flex; justify-content: space-between;">
                     <span>3-й день после получения</span>
                     <span style="color: var(--success-color); font-weight: bold;">Комиссия 10%</span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function getTokenContent() {
+    return `
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-shield-alt"></i>
+                О токене VexShield (VXH)
+            </div>
+            
+            <div class="info-block">
+                <h3>🔹 Основные параметры</h3>
+                <p><strong>Название:</strong> VexShield Token</p>
+                <p><strong>Тикер:</strong> VXH</p>
+                <p><strong>Сеть:</strong> Binance Smart Chain (BEP-20)</p>
+                <p><strong>Максимальное предложение:</strong> 1,000,000 VXH</p>
+            </div>
+            
+            <div class="info-block">
+                <h3>🎯 Назначение</h3>
+                <p>VexShield Token создан для защиты инвесторов и формирования устойчивой криптоэкосистемы, где ценность токена растет вместе с активностью сообщества.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-ban"></i></div>
+                    <h3>AntiDump</h3>
+                    <p>Динамическая комиссия защищает от резких обвалов цены.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-water"></i></div>
+                    <h3>Auto-Liquidity</h3>
+                    <p>Автоматическое пополнение ликвидности стабилизирует цену.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-fire"></i></div>
+                    <h3>Burn-механизм</h3>
+                    <p>Сжигание части токенов увеличивает ценность VXH.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-robot"></i></div>
+                    <h3>Anti-Bot защита</h3>
+                    <p>Блокировка флэш-атак и манипуляций с помощью ботов.</p>
                 </div>
             </div>
         </div>
@@ -106,40 +154,6 @@ function getModulesContent() {
                 <p>• 💸 Динамическая комиссия</p>
                 <p>• 🚫 Лимит на продажи</p>
                 <p>• 🔄 Buyback & Liquidity</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <h3>Сжигание токенов</h3>
-                    <p>Автоматическое сжигание части комиссий для уменьшения supply</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-percentage"></i>
-                    </div>
-                    <h3>Динамическая комиссия</h3>
-                    <p>Адаптивная система комиссий в зависимости от времени</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-ban"></i>
-                    </div>
-                    <h3>Лимит на продажи</h3>
-                    <p>Ограничение крупных продаж для защиты цены</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                    <h3>Buyback & Liquidity</h3>
-                    <p>Автоматическое пополнение ликвидности из комиссий</p>
-                </div>
             </div>
         </div>
     `;
@@ -174,7 +188,7 @@ function getRoadmapContent() {
                     </div>
                     <div class="roadmap-content">
                         <h3>✅ Airdrop</h3>
-                        <p>Запуск программы распределения токенов с защитой от демпинга</p>
+                        <p>Запуск программы распределения токенов с защитой от дампинга</p>
                     </div>
                 </div>
                 
@@ -211,6 +225,3 @@ function getRoadmapContent() {
         </div>
     `;
 }
-
-// Остальные функции оставьте без изменений (getRewardsContent, getReferralContent, getWalletContent, getSettingsContent)
-// или добавьте их из предыдущей версии если нужно
