@@ -121,4 +121,8 @@ function loadPageContent(pageId) {
 
 document.addEventListener('DOMContentLoaded', function() {
     loadPageContent('dashboard');
+
 });
+case 'token':
+    pageContainer.innerHTML = getTokenContent();
+    break;
