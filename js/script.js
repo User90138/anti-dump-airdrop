@@ -85,7 +85,10 @@ function loadPageContent(pageId) {
         case 'help':
             pageContainer.innerHTML = getHelpContent();
             break;
-        default:
+       case 'token':
+    pageContainer.innerHTML = getTokenContent();
+    break;
+    default:
             pageContainer.innerHTML = `<div class="card"><div class="card-title"><i class="fas fa-cog"></i>${pageId}</div><p>Содержимое страницы</p></div>`;
     }
     
@@ -126,3 +129,4 @@ document.addEventListener('DOMContentLoaded', function() {
 case 'token':
     pageContainer.innerHTML = getTokenContent();
     break;
+
